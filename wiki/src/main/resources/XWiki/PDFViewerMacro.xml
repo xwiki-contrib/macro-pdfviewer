@@ -339,7 +339,7 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
       &lt;![endif]--&gt;
       &lt;![if !(lt IE 10)]&gt;
         &lt;iframe src="${pdfviewerurl}/pdf-viewer/web/viewer.html?file=${url}#locale=${context.language}" width="${width}" height="${height}"&gt;&lt;/iframe&gt;
-      &lt;![endif]-->
+      &lt;![endif]--&gt;
       &lt;/div&gt;
     {{/html}}
   #elseif (!$document || $document.isNew())
