@@ -39,21 +39,19 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content>## XWiki Translation for language fr generated from http://www.l10n.xwiki.org
-pdfviewer.error.noattachment=Le fichier attaché [{0}] n''existe pas dans le document [{1}].
-pdfviewer.error.nodocument=Le document [{0}] n''existe pas ou vous n''avez pas accès à ce document.
-pdfviewer.error.nofile=Pas de nom de fichier PDF ou de chemin URL absolu fourni.
+  <content>rendering.macro.pdfviewer.name=PDF Viewer
 rendering.macro.pdfviewer.description=PDF Viewer basé sur Mozilla pdf.js
-rendering.macro.pdfviewer.name=PDF Viewer
-rendering.macro.pdfviewer.parameter.asauthor.description=Si cette valeur est "1" (ou "true" ou "yes") et que l'utilisateur qui consulte le présent document n'a pas d'accès en consultation sur le document contenant le fichier PDF, le fichier PDF peut, malgré tout, être lu grâce à votre propre droit de consultation (si vous avez vous-même le droit de consulter le document contenant le fichier PDF, bien évidemment). Ce paramètre est ignoré pour les URLs.
-rendering.macro.pdfviewer.parameter.asauthor.name=Délégation de mon droit de visualisation
-rendering.macro.pdfviewer.parameter.document.description=Référence du document auquel est attaché le fichier. Si elle n'est pas définie, le document courant est utilisé. Si fichier est un chemin URL absolu, la référence est ignorée.
-rendering.macro.pdfviewer.parameter.document.name=Document
-rendering.macro.pdfviewer.parameter.file.description=Fichier ou chemin URL vers le fichier PDF
 rendering.macro.pdfviewer.parameter.file.name=Fichier
-rendering.macro.pdfviewer.parameter.height.description=La hauteur du viewer en pixels. Si elle n'est pas définie, la valeur par défaut sera utilisée
-rendering.macro.pdfviewer.parameter.height.name=Hauteur
-rendering.macro.pdfviewer.parameter.width.description=La largeur du viewer en pixels. Si elle n'est pas définie, la valeur par défaut sera utilisée
+rendering.macro.pdfviewer.parameter.file.description=Nom du fichier PDF ou chemin URL absolu vers le fichier PDF
+rendering.macro.pdfviewer.parameter.document.name=Document
+rendering.macro.pdfviewer.parameter.document.description=Référence du document auquel est attaché le fichier. Si elle n'est pas définie, le document courant est utilisé. Si fichier est un chemin URL absolu, la référence est ignorée.
 rendering.macro.pdfviewer.parameter.width.name=Largeur
-</content>
+rendering.macro.pdfviewer.parameter.width.description=La largeur du viewer en pixels. Si elle n'est pas définie, la valeur par défaut sera utilisée
+rendering.macro.pdfviewer.parameter.height.name=Hauteur
+rendering.macro.pdfviewer.parameter.height.description=La hauteur du viewer en pixels. Si elle n'est pas définie, la valeur par défaut sera utilisée
+rendering.macro.pdfviewer.parameter.asauthor.name=Délégation de mon droit de visualisation
+rendering.macro.pdfviewer.parameter.asauthor.description=Si cette valeur est "1" (ou "true" ou "yes") et que l'utilisateur qui consulte le présent document n'a pas d'accès en consultation sur le document contenant le fichier PDF, le fichier PDF peut, malgré tout, être lu grâce à votre propre droit de consultation (si vous avez vous-même le droit de consulter le document contenant le fichier PDF, bien évidemment). Ce paramètre est ignoré pour les URLs.
+pdfviewer.error.nodocument=Le document [{0}] n''existe pas ou vous n''avez pas accès à ce document.
+pdfviewer.error.noattachment=Le fichier attaché [{0}] n''existe pas dans le document [{1}].
+pdfviewer.error.nofile=Pas de nom de fichier PDF ou de chemin URL absolu fourni.</content>
 </xwikidoc>
