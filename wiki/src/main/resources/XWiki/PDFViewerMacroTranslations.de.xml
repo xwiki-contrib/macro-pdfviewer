@@ -42,11 +42,11 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-<content>rendering.macro.pdfviewer.name=PDF Viewer
-### Missing: rendering.macro.pdfviewer.description=PDF Viewer based on Mozilla pdf.js
-### Missing: rendering.macro.pdfviewer.parameter.file.name=File
-### Missing: rendering.macro.pdfviewer.parameter.file.description=Name of the PDF file or absolute URL to the PDF file
-### Missing: rendering.macro.pdfviewer.parameter.document.name=Document
+<content>rendering.macro.pdfviewer.name=PDF Betrachter
+rendering.macro.pdfviewer.description=PDF Betrachter basierend auf Mozilla pdf.js
+rendering.macro.pdfviewer.parameter.file.name=Datei
+rendering.macro.pdfviewer.parameter.file.description=Name der PDF-Datei oder absolute URL zur PDF-Datei
+rendering.macro.pdfviewer.parameter.document.name=Document
 ### Missing: rendering.macro.pdfviewer.parameter.document.description=Reference to the XWiki document to which the file is attached. If not defined, the current document is used. If file argument is an absolute URL, this argument is ignored.
 ### Missing: rendering.macro.pdfviewer.parameter.width.name=Width
 ### Missing: rendering.macro.pdfviewer.parameter.width.description=The viewer width, in pixels. If not defined the default value will be used
