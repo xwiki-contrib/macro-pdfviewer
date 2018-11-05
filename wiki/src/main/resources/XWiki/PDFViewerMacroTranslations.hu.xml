@@ -39,14 +39,20 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content>## XWiki Translation for language hu generated from http://www.l10n.xwiki.org
+  <content>rendering.macro.pdfviewer.name=PDF megjelenítő
 rendering.macro.pdfviewer.description=PDF megjelenítő Mozilla pdf.js alapon
-rendering.macro.pdfviewer.name=PDF megjelenítő
-rendering.macro.pdfviewer.parameter.file.description=Fájl vagy URL a PDF fájlhoz
 rendering.macro.pdfviewer.parameter.file.name=Fájl
-rendering.macro.pdfviewer.parameter.height.description=A megtekintő magassága pixelekben. Amennyiben nincs definiálva az alapértelmezett érték lesz használva.
-rendering.macro.pdfviewer.parameter.height.name=Magasság
-rendering.macro.pdfviewer.parameter.width.description=A megtekintő szélessége pixelekben. Amennyiben nincs definiálva az alapértelmezett érték lesz használva.
+rendering.macro.pdfviewer.parameter.file.description=Fájl vagy URL a PDF fájlhoz
+### Missing: rendering.macro.pdfviewer.parameter.document.name=Document
+### Missing: rendering.macro.pdfviewer.parameter.document.description=Reference to the XWiki document to which the file is attached. If not defined, the current document is used. If file argument is an absolute URL, this argument is ignored.
 rendering.macro.pdfviewer.parameter.width.name=Szélesség
+rendering.macro.pdfviewer.parameter.width.description=A megtekintő szélessége pixelekben. Amennyiben nincs definiálva az alapértelmezett érték lesz használva.
+rendering.macro.pdfviewer.parameter.height.name=Magasság
+rendering.macro.pdfviewer.parameter.height.description=A megtekintő magassága pixelekben. Amennyiben nincs definiálva az alapértelmezett érték lesz használva.
+### Missing: rendering.macro.pdfviewer.parameter.asauthor.name=Delegate my view right
+### Missing: rendering.macro.pdfviewer.parameter.asauthor.description=If this value is true (or 1 or yes) and the viewing user has no access to the document containing the PDF file, the PDF file could still be viewed on behalf of your view right (if you have view right on the containing document obviously).
+### Missing: pdfviewer.error.nodocument=The document [{0}] does not exists or you have no access to that document.
+### Missing: pdfviewer.error.noattachment=The file attachment [{0}] does not exists in document [{1}].
+### Missing: pdfviewer.error.nofile=No PDF filename or absolute URL provided.
 </content>
 </xwikidoc>

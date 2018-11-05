@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc reference="XWiki.PDFViewerMacroTranslations" locale="de">
+  <web>XWiki</web>
+  <name>PDFViewerMacroTranslations</name>
+  <language>de</language>
+  <defaultLanguage>en</defaultLanguage>
+  <translation>1</translation>
+  <parent>XWiki.PDFViewerMacro</parent>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1424866881000</creationDate>
+  <date>1480374469000</date>
+  <contentUpdateDate>1480374469000</contentUpdateDate>
+  <version>1.1</version>
+  <title>PDFViewer Macro Translations</title>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+<content>rendering.macro.pdfviewer.name=PDF Betrachter
+rendering.macro.pdfviewer.description=PDF Betrachter basierend auf Mozilla pdf.js
+rendering.macro.pdfviewer.parameter.file.name=Datei
+rendering.macro.pdfviewer.parameter.file.description=Name der PDF-Datei oder absolute URL zur PDF-Datei
+rendering.macro.pdfviewer.parameter.document.name=Dokument
+rendering.macro.pdfviewer.parameter.document.description=Verweis auf das XWiki-Dokument, an das die Datei angehängt ist. Wenn nicht definiert, wird das aktuelle Dokument verwendet. Ist der Datei Parameter eine absolute URL, wird dieser Parameter ignoriert.
+rendering.macro.pdfviewer.parameter.width.name=Breite
+rendering.macro.pdfviewer.parameter.width.description=Die Betrachter-Breite in Pixel. Wenn nicht definiert, wird der Standardwert verwendet
+rendering.macro.pdfviewer.parameter.height.name=Höhe
+rendering.macro.pdfviewer.parameter.height.description=Die Betrachterhöhe in Pixel. Wenn nicht definiert, wird der Standardwert verwendet
+rendering.macro.pdfviewer.parameter.asauthor.name=Meine Betrachtungsrechte übertragen
+rendering.macro.pdfviewer.parameter.asauthor.description=Ist dieser Wert true (oder 1 oder yes) und der betrachtende Benutzer hat keinen Zugriff auf das Dokument, das die PDF Datei enthält, kann die PDF unter Ihrer eigenen Berechtigung trotzdem angesehen werden (Vorausgesetzt Sie haben Betrachtungsrecht auf das beinhaltende Dokument).
+pdfviewer.error.nodocument=Das Dokument [{0}] ist nicht vorhanden oder Sie haben keinen Zugriff auf dieses Dokument.
+pdfviewer.error.noattachment=Der Dateianhang [{0}] ist in Dokument [{1}] nicht vorhanden.
+pdfviewer.error.nofile=Kein PDF-Dateiname oder absolute URL angegeben.</content>
+</xwikidoc>

@@ -39,21 +39,20 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content>## XWiki Translation for language hr generated from http://www.l10n.xwiki.org
-pdfviewer.error.noattachment=Privitak [{0}] ne postoji u dokumentu [{1}].
-pdfviewer.error.nodocument=Dokument [{0}] ne postoji ili nemate pristup dokumentu.
-pdfviewer.error.nofile=Nije navedeno ime PDF-a ili apsolutni URL.
+  <content>rendering.macro.pdfviewer.name=PDF preglednik
 rendering.macro.pdfviewer.description=PDF preglednik temeljen na Mozilla pdf.js
-rendering.macro.pdfviewer.name=PDF preglednik
-rendering.macro.pdfviewer.parameter.asauthor.description=Ukoliko je ova vrijednost istinita (ili 1 ili da) i korisnik koji pregledaje nema pristup dokumentu koji sadrži PDF datoteku, PDF datoteka svejedno može biti pregledana temeljem vaše ovlasti za pregled (ukoliko imate ovlast za pregled sadržavajuće datoteke, dakako).
-rendering.macro.pdfviewer.parameter.asauthor.name=Delegiraj moju ovlast za pregledavanje
-rendering.macro.pdfviewer.parameter.document.description=Referenca na XWiki dokument kojem je zakačena datoteka. Ako nije definirana, koristi se trenutni dokument. Ukoliko je argument datoteke apsolutni URL, ovaj argument se ignorira.
-rendering.macro.pdfviewer.parameter.document.name=Dokument
-rendering.macro.pdfviewer.parameter.file.description=Ime PDF datoteke ili apsolutni URL prema PDF datoteci.
 rendering.macro.pdfviewer.parameter.file.name=Datoteka
-rendering.macro.pdfviewer.parameter.height.description=Visina preglednika, u pikselima. Ukoliko nije definirana bit će upotrijebljena pretpostavljena vrijednost.
-rendering.macro.pdfviewer.parameter.height.name=Visina
-rendering.macro.pdfviewer.parameter.width.description=Širina preglednika, u pikselima. Ukoliko nije definirana bit će upotrijebljena pretpostavljena vrijednost.
+rendering.macro.pdfviewer.parameter.file.description=Ime PDF datoteke ili apsolutni URL prema PDF datoteci.
+rendering.macro.pdfviewer.parameter.document.name=Dokument
+rendering.macro.pdfviewer.parameter.document.description=Referenca na XWiki dokument kojem je zakačena datoteka. Ako nije definirana, koristi se trenutni dokument. Ukoliko je argument datoteke apsolutni URL, ovaj argument se ignorira.
 rendering.macro.pdfviewer.parameter.width.name=Širina
+rendering.macro.pdfviewer.parameter.width.description=Širina preglednika, u pikselima. Ukoliko nije definirana bit će upotrijebljena pretpostavljena vrijednost.
+rendering.macro.pdfviewer.parameter.height.name=Visina
+rendering.macro.pdfviewer.parameter.height.description=Visina preglednika, u pikselima. Ukoliko nije definirana bit će upotrijebljena pretpostavljena vrijednost.
+rendering.macro.pdfviewer.parameter.asauthor.name=Delegiraj moju ovlast za pregledavanje
+rendering.macro.pdfviewer.parameter.asauthor.description=Ukoliko je ova vrijednost istinita (ili 1 ili da) i korisnik koji pregledaje nema pristup dokumentu koji sadrži PDF datoteku, PDF datoteka svejedno može biti pregledana temeljem vaše ovlasti za pregled (ukoliko imate ovlast za pregled sadržavajuće datoteke, dakako).
+pdfviewer.error.nodocument=Dokument [{0}] ne postoji ili nemate pristup dokumentu.
+pdfviewer.error.noattachment=Privitak [{0}] ne postoji u dokumentu [{1}].
+pdfviewer.error.nofile=Nije navedeno ime PDF-a ili apsolutni URL.
 </content>
 </xwikidoc>
