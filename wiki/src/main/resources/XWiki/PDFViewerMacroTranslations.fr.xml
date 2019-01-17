@@ -53,5 +53,5 @@ rendering.macro.pdfviewer.parameter.asauthor.name=Délégation de mon droit de v
 rendering.macro.pdfviewer.parameter.asauthor.description=Si cette valeur est "1" (ou "true" ou "yes") et que l'utilisateur qui consulte le présent document n'a pas d'accès en consultation sur le document contenant le fichier PDF, le fichier PDF peut, malgré tout, être lu grâce à votre propre droit de consultation (si vous avez vous-même le droit de consulter le document contenant le fichier PDF, bien évidemment). Ce paramètre est ignoré pour les URLs.
 pdfviewer.error.nodocument=Le document [{0}] n''existe pas ou vous n''avez pas accès à ce document.
 pdfviewer.error.noattachment=Le fichier attaché [{0}] n''existe pas dans le document [{1}].
-pdfviewer.error.nofile=Pas de nom de fichier PDF ou de chemin URL absolu fourni.</content>
+pdfviewer.error.nofile=Aucun nom de fichier PDF ou chemin URL absolu fourni.</content>
 </xwikidoc>
