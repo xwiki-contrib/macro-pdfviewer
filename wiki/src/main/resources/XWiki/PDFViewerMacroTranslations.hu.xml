@@ -53,6 +53,5 @@ rendering.macro.pdfviewer.parameter.height.description=A megtekintő magassága 
 ### Missing: rendering.macro.pdfviewer.parameter.asauthor.description=If this value is true (or 1 or yes) and the viewing user has no access to the document containing the PDF file, the PDF file could still be viewed on behalf of your view right (if you have view right on the containing document obviously).
 ### Missing: pdfviewer.error.nodocument=The document [{0}] does not exists or you have no access to that document.
 ### Missing: pdfviewer.error.noattachment=The file attachment [{0}] does not exists in document [{1}].
-### Missing: pdfviewer.error.nofile=No PDF filename or absolute URL provided.
-</content>
+### Missing: pdfviewer.error.nofile=No PDF filename or absolute URL provided.</content>
 </xwikidoc>
