@@ -53,6 +53,5 @@ rendering.macro.pdfviewer.parameter.asauthor.name=Delegiraj moju ovlast za pregl
 rendering.macro.pdfviewer.parameter.asauthor.description=Ukoliko je ova vrijednost istinita (ili 1 ili da) i korisnik koji pregledaje nema pristup dokumentu koji sadrži PDF datoteku, PDF datoteka svejedno može biti pregledana temeljem vaše ovlasti za pregled (ukoliko imate ovlast za pregled sadržavajuće datoteke, dakako).
 pdfviewer.error.nodocument=Dokument [{0}] ne postoji ili nemate pristup dokumentu.
 pdfviewer.error.noattachment=Privitak [{0}] ne postoji u dokumentu [{1}].
-pdfviewer.error.nofile=Nije navedeno ime PDF-a ili apsolutni URL.
-</content>
+pdfviewer.error.nofile=Nije navedeno ime PDF-a ili apsolutni URL.</content>
 </xwikidoc>
