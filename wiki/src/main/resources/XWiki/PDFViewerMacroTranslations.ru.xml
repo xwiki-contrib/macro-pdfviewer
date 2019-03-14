@@ -43,5 +43,19 @@
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
   
-  <content></content>
+  <content>rendering.macro.pdfviewer.name=PDF Viewer
+rendering.macro.pdfviewer.description=PDF Viewer на основе Mozilla pdf.js
+rendering.macro.pdfviewer.parameter.file.name=Файл
+rendering.macro.pdfviewer.parameter.file.description=Имя или абсолютный URL PDF-файла
+rendering.macro.pdfviewer.parameter.document.name=Документ
+rendering.macro.pdfviewer.parameter.document.description=Ссылка на XWiki-документ к которому прикреплён файл. Если не указано, то используется текущий документ. Если файл указан как абсолютный URL, то данный параметр игнорируется.
+rendering.macro.pdfviewer.parameter.width.name=Ширина
+rendering.macro.pdfviewer.parameter.width.description=Ширина просмотрщика в пикселях. Если не указано, то будет использовано значение по умолчанию
+rendering.macro.pdfviewer.parameter.height.name=Высота
+rendering.macro.pdfviewer.parameter.height.description=Высота просмотрщика в пикселях. Если не указано, то будет использовано значение по умолчанию
+rendering.macro.pdfviewer.parameter.asauthor.name=Делегировать мои права просмотра
+rendering.macro.pdfviewer.parameter.asauthor.description=Если это значение установлено в true (или 1 или yes) и просматривающий пользователь не имеет прав на документ, содержащий PDF-файл, то PDF всё ещё может быть просмотрен с вашими правами (разумеется, если у Вас есть права на просмотр содержащего его документа).
+pdfviewer.error.nodocument=Документ [{0}] не существует либо у Вас нет к нему доступа.
+pdfviewer.error.noattachment=Файла вложения [{0}] не существует в документе [{1}].
+pdfviewer.error.nofile=Не указано имя PDF-файла или его абсолютный URL.</content>
 </xwikidoc>
