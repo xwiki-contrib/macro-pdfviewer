@@ -332,6 +332,8 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
   #if ($url)
     #set($url = $escapetool.url($url))
     #set($pdfviewerurl = $xwiki.getDocument("XWiki.PDFViewerMacro").getAttachmentURL("pdfviewer.zip"))
+    ## Attachment URL have query parameters for cache issue.
+    #set($pdfviewerurl = $pdfviewerurl.split("\?")[0])
     {{html clean=false}}
       &lt;div&gt;
       &lt;!--[if lt IE 10]&gt;
