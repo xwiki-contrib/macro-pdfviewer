@@ -27,7 +27,7 @@
   <parent>
    <groupId>org.xwiki.contrib</groupId>
    <artifactId>xwiki-macro-pdfviewer-parent</artifactId>
-   <version>1.6.3</version>
+   <version>1.7-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-macro-pdfviewer-js</artifactId>
   <packaging>pom</packaging>
