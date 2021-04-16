@@ -44,19 +44,19 @@
   <hidden>true</hidden>
   
   <content>rendering.macro.pdfviewer.name=Visor de PDF
-rendering.macro.pdfviewer.description=Visor de PDF basado en Mozilla pdf.js
-rendering.macro.pdfviewer.parameter.file.name=Fichero
+rendering.macro.pdfviewer.description=Visor de PDF basado en pdf.js de Mozilla
+rendering.macro.pdfviewer.parameter.file.name=Archivo
 rendering.macro.pdfviewer.parameter.file.description=Nombre del fichero PDF o URL completa al fichero PDF
 rendering.macro.pdfviewer.parameter.document.name=Documento
 rendering.macro.pdfviewer.parameter.document.description=Referencia al documento XWiki al que el fichero está adjuntado. Si no está definida, se emplea el documento actual. Si el argumento ficher es una URL absoluta, se ignora este argumento.
-rendering.macro.pdfviewer.parameter.width.name=Ancho
+rendering.macro.pdfviewer.parameter.width.name=Anchura
 rendering.macro.pdfviewer.parameter.width.description=La anchura del visor, en pixeles. Si no está definida se utilizará el valor predeterminado
-rendering.macro.pdfviewer.parameter.height.name=Alto
+rendering.macro.pdfviewer.parameter.height.name=Altura
 rendering.macro.pdfviewer.parameter.height.description=La altura del visor, en pixeles. Si no está definida se utilizará el valor predeterminado
 rendering.macro.pdfviewer.parameter.asauthor.name=Delegar mi derecho de visualizar ("view")
 rendering.macro.pdfviewer.parameter.asauthor.description=Si este valor es "true" (o 1 o "yes") y el usuario que está viendo el documento no tiene acceso al documento que contiene el fichero PDF, también se podría visualizar el fichero PDF en nombre de tu derecho de visualización (si, obviamente, tienes derecho de visualización ("view") sobre el documento que lo contiene).
-pdfviewer.error.nodocument=El documento [{0}] no existe o no tienes acceso a ese documento.
-pdfviewer.error.noattachment=El fichero adjunto [{0}] no existe en el documento [{1}].
+pdfviewer.error.nodocument=El documento [{0}] no existe o no tiene acceso a ese documento.
+pdfviewer.error.noattachment=El archivo adjunto [{0}] no existe en el documento [{1}].
 pdfviewer.error.nofile=No se provee ningún nombre de fichero PDF o URL completa.
 </content>
 </xwikidoc>
