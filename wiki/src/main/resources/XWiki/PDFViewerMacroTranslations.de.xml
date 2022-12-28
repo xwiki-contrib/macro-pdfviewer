@@ -42,7 +42,7 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-<content>rendering.macro.pdfviewer.name=PDF Betrachter
+  <content>rendering.macro.pdfviewer.name=PDF Betrachter
 rendering.macro.pdfviewer.description=PDF Betrachter basierend auf Mozilla pdf.js
 rendering.macro.pdfviewer.parameter.file.name=Datei
 rendering.macro.pdfviewer.parameter.file.description=Name der PDF-Datei oder absolute URL zur PDF-Datei
