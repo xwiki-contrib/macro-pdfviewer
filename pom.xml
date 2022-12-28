@@ -29,7 +29,7 @@
   </parent>
   <groupId>org.xwiki.contrib</groupId>
   <artifactId>xwiki-macro-pdfviewer-parent</artifactId>
-  <version>1.7</version>
+  <version>1.7.1-SNAPSHOT</version>
   <name>PDF Viewer Macro - Parent POM</name>
   <description>PDF Viewer Macro based on Mozilla's pdf.js</description>
   <packaging>pom</packaging>
@@ -67,7 +67,7 @@
     <connection>scm:git:git://github.com:xwiki-contrib/macro-pdfviewer.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/macro-pdfviewer.git</developerConnection>
     <url>https://github.com/xwiki-contrib/macro-pdfviewer/tree/master</url>
-    <tag>xwiki-macro-pdfviewer-parent-1.7</tag>
+    <tag>HEAD</tag>
   </scm>
   <build>
     <pluginManagement>

@@ -25,7 +25,7 @@
   <parent>
     <groupId>org.xwiki.contrib</groupId>
     <artifactId>xwiki-macro-pdfviewer-parent</artifactId>
-    <version>1.7</version>
+    <version>1.7.1-SNAPSHOT</version>
   </parent>
   <artifactId>xwiki-macro-pdfviewer</artifactId>
   <packaging>xar</packaging>
