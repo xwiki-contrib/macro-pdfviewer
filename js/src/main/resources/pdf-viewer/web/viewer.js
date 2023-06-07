@@ -1800,6 +1800,7 @@ var SecondaryToolbar = {
     this.print = options.print;
     this.download = options.download;
     this.viewBookmark = options.viewBookmark;
+    this.copyPosition = options.copyPosition;
     this.firstPage = options.firstPage;
     this.lastPage = options.lastPage;
     this.pageRotateCw = options.pageRotateCw;
@@ -1817,6 +1818,7 @@ var SecondaryToolbar = {
       { element: this.openFile, handler: this.openFileClick },
       { element: this.print, handler: this.printClick },
       { element: this.download, handler: this.downloadClick },
+      { element: this.copyPosition, handler: this.copyPositionClick },
       { element: this.viewBookmark, handler: this.viewBookmarkClick },
       { element: this.firstPage, handler: this.firstPageClick },
       { element: this.lastPage, handler: this.lastPageClick },
@@ -1853,6 +1855,12 @@ var SecondaryToolbar = {
   downloadClick: function secondaryToolbarDownloadClick(evt) {
     PDFViewerApplication.download();
     this.close();
+  },
+
+  copyPositionClick: function (evt) {
+    PDFViewerApplication.pdfViewer.update();
+    navigator.clipboard.writeText(PDFViewerApplication.pdfViewer.location.pdfOpenParams);
+    evt.preventDefault();
   },
 
   viewBookmarkClick: function secondaryToolbarViewBookmarkClick(evt) {
@@ -4578,6 +4586,11 @@ var PDFViewer = (function pdfViewer() {
       scrollIntoView(pageView.div, { left: left, top: top });
     },
 
+    updateCurrentPositionView: function pdfViewUpdateCurrentPositionView() {
+      let positionTextContainer = document.getElementById('positionTextContainer');
+      positionTextContainer.innerText = `Pos:${this.location.left},${this.location.top}`;
+    },
+
     _updateLocation: function (firstPage) {
       var currentScale = this._currentScale;
       var currentScaleValue = this._currentScaleValue;
@@ -5537,6 +5550,7 @@ var PDFViewerApplication = {
       openFile: document.getElementById('secondaryOpenFile'),
       print: document.getElementById('secondaryPrint'),
       download: document.getElementById('secondaryDownload'),
+      copyPosition: document.getElementById('copyPositionButton'),
       viewBookmark: document.getElementById('secondaryViewBookmark'),
       firstPage: document.getElementById('firstPage'),
       lastPage: document.getElementById('lastPage'),
