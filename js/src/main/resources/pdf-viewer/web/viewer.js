@@ -6388,14 +6388,14 @@ var PDFViewerApplication = {
     }
 
     const params = new URLSearchParams(document.location.hash.substring(1));
-    let pageNumber = parseInt(params.get("pageNumber"));
+    let page = parseInt(params.get("page"));
     let text = params.get("text");
     let matchNumberAsString = params.get("matchNumber");
-    if(pageNumber && !text)
-      this.pdfViewer.scrollPageIntoView(pageNumber);
-    else if(pageNumber && text) {
+    if(page && !text)
+      this.pdfViewer.scrollPageIntoView(page);
+    else if(page && text) {
       let matchNumber = matchNumberAsString ? parseInt(matchNumberAsString) : 1;
-      this.pdfViewer.scrollTextOnPageIntoView(pageNumber, text, matchNumber);
+      this.pdfViewer.scrollTextOnPageIntoView(page, text, matchNumber);
     }
 
     if (this.pdfViewer.currentScale === UNKNOWN_SCALE) {

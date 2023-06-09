@@ -292,7 +292,7 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
 #set($file = $context.macro.params.file)
 #set($docname = $context.macro.params.document)
 #set($openParameters = "#if($context.macro.params.openParameters)$context.macro.params.openParameters#end")
-#set($pageNumberParameter = $context.macro.params.pageNumber)
+#set($pageParameter = $context.macro.params.page)
 #set($textParameter = $context.macro.params.text)
 #set($matchNumberParameter = $context.macro.params.matchNumber)
 #set($asAuthor = $context.macro.params.asauthor &amp;&amp; ($context.macro.params.asauthor == "true" || $context.macro.params.asauthor == "yes" || $context.macro.params.asauthor == "1"))
@@ -352,10 +352,10 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
             #set($openParameters = $openParameters.substring(1))
           #end
         #end
-        #set($pageNumberQueryArgument = "#if($pageNumberParameter)&amp;pageNumber=$pageNumberParameter#end")
+        #set($pageQueryArgument = "#if($pageParameter)&amp;page=$pageParameter#end")
         #set($textQueryArgument = "#if($textParameter)&amp;text=$textParameter#end")
         #set($matchNumberQueryArgument = "#if($matchNumberParameter)&amp;matchNumber=$matchNumberParameter#end")
-        &lt;iframe src="${pdfviewerurl}/pdf-viewer/web/viewer.html?file=${url}#${openParameters}$pageNumberQueryArgument$textQueryArgument$matchNumberQueryArgument&amp;locale=${context.language}" width="${width}" height="${height}"&gt;&lt;/iframe&gt;
+        &lt;iframe src="${pdfviewerurl}/pdf-viewer/web/viewer.html?file=${url}#${openParameters}$pageQueryArgument$textQueryArgument$matchNumberQueryArgument&amp;locale=${context.language}" width="${width}" height="${height}"&gt;&lt;/iframe&gt;
       &lt;![endif]--&gt;
       &lt;/div&gt;
     {{/html}}
@@ -587,7 +587,7 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
       <description>Page number to open</description>
     </property>
     <property>
-      <name>pageNumber</name>
+      <name>page</name>
     </property>
   </object>
   <object>
