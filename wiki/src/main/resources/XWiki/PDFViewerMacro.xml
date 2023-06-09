@@ -715,7 +715,7 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
       <defaultValue/>
     </property>
     <property>
-      <description>Text to find and view on the page</description>
+      <description>Number of the match of the text on the page.</description>
     </property>
     <property>
       <name>matchNumber</name>
