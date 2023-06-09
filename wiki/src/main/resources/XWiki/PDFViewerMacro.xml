@@ -291,10 +291,11 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
 #set($height = $context.macro.params.height)
 #set($file = $context.macro.params.file)
 #set($docname = $context.macro.params.document)
-#set($openParameters = "#if($context.macro.params.openParameters)$context.macro.params.openParameters#end")
 #set($pageParameter = $context.macro.params.page)
 #set($textParameter = $context.macro.params.text)
 #set($matchNumberParameter = $context.macro.params.matchNumber)
+#set($zoomParameter = $context.macro.params.zoom)
+#set($openParameters = "#if($context.macro.params.openParameters)$context.macro.params.openParameters#end")
 #set($asAuthor = $context.macro.params.asauthor &amp;&amp; ($context.macro.params.asauthor == "true" || $context.macro.params.asauthor == "yes" || $context.macro.params.asauthor == "1"))
 #if(!$file)
   {{error}}$services.localization.render('pdfviewer.error.nofile'){{/error}}
@@ -355,7 +356,9 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
         #set($pageQueryArgument = "#if($pageParameter)&amp;page=$pageParameter#end")
         #set($textQueryArgument = "#if($textParameter)&amp;text=$textParameter#end")
         #set($matchNumberQueryArgument = "#if($matchNumberParameter)&amp;matchNumber=$matchNumberParameter#end")
-        &lt;iframe src="${pdfviewerurl}/pdf-viewer/web/viewer.html?file=${url}#${openParameters}$pageQueryArgument$textQueryArgument$matchNumberQueryArgument&amp;locale=${context.language}" width="${width}" height="${height}"&gt;&lt;/iframe&gt;
+        #set($zoomQueryArgument = "#if($zoomParameter)&amp;zoom=$zoomParameter#end")
+        #set($localeQueryArgument = "&amp;locale=${context.language}")
+        &lt;iframe src="${pdfviewerurl}/pdf-viewer/web/viewer.html?file=${url}#${openParameters}$pageQueryArgument$textQueryArgument$matchNumberQueryArgument$zoomQueryArgument$localeQueryArgument" width="${width}" height="${height}"&gt;&lt;/iframe&gt;
       &lt;![endif]--&gt;
       &lt;/div&gt;
     {{/html}}
@@ -771,6 +774,70 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
     <name>XWiki.PDFViewerMacro</name>
     <number>5</number>
     <className>XWiki.WikiMacroParameterClass</className>
+    <guid>80e795a9-da2d-4f3e-8732-1d3efb97b4b0</guid>
+    <property>
+      <defaultValue />
+    </property>
+    <property>
+      <description>Zoom to open document with in percents.</description>
+    </property>
+    <property>
+      <name>zoom</name>
+    </property>
+  </object>
+  <object>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <contenttype/>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+    </class>
+    <name>XWiki.PDFViewerMacro</name>
+    <number>6</number>
+    <className>XWiki.WikiMacroParameterClass</className>
     <guid>80e795a9-da2d-4f3e-8732-1d3efb97b4b1</guid>
     <property>
       <defaultValue/>
@@ -833,7 +900,7 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
       </name>
     </class>
     <name>XWiki.PDFViewerMacro</name>
-    <number>6</number>
+    <number>7</number>
     <className>XWiki.WikiMacroParameterClass</className>
     <guid>90e37db1-ed7b-4b65-82d6-4e3678a0dd58</guid>
     <property>
@@ -900,7 +967,7 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
       </name>
     </class>
     <name>XWiki.PDFViewerMacro</name>
-    <number>7</number>
+    <number>8</number>
     <className>XWiki.WikiMacroParameterClass</className>
     <guid>80e795a9-da2d-4f3e-8732-1d3efb97b4a0</guid>
     <property>
@@ -967,7 +1034,7 @@ YW0NZW5kb2JqDXN0YXJ0eHJlZg0xMTYNJSVFT0YN
       </name>
     </class>
     <name>XWiki.PDFViewerMacro</name>
-    <number>8</number>
+    <number>9</number>
     <className>XWiki.WikiMacroParameterClass</className>
     <guid>71393ffb-5ae1-4257-acc6-b20371e6313d</guid>
     <property>
