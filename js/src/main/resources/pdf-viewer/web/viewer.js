@@ -1175,6 +1175,23 @@ var PDFFindController = (function PDFFindControllerClosure() {
       }
     },
 
+    getPageText: function PDFFindController_extractPageText(pageIndex) {
+    function textContentResolved(pageTextContentObject) {
+      let textItems = pageTextContentObject.items;
+      let textCharacterItems = [];
+
+      for (const textItem of textItems) {
+        textCharacterItems.push(textItem.str);
+      }
+
+      let pageContentString = textCharacterItems.join('');
+      return pageContentString;
+    }
+    let promise = this.pdfViewer.getPageTextContent(pageIndex).then(textContentResolved);
+    return promise;
+  },
+
+
     extractText: function PDFFindController_extractText() {
       if (this.startedTextExtraction) {
         return;
@@ -4586,9 +4603,57 @@ var PDFViewer = (function pdfViewer() {
       scrollIntoView(pageView.div, { left: left, top: top });
     },
 
-    updateCurrentPositionView: function pdfViewUpdateCurrentPositionView() {
-      let positionTextContainer = document.getElementById('positionTextContainer');
-      positionTextContainer.innerText = `Pos:${this.location.left},${this.location.top}`;
+    scrollTextOnPageIntoView: function pdfViewer_scrollTextOnPageIntoView(pageNumber, textToFind, matchNumber) {
+      let matchNumberIndex = Math.max(matchNumber - 1, 0);
+      function scrollViewToElement() {
+        let pageIndex = parseInt(pageNumber) - 1;
+        let pageTextLayer = this.pages[pageIndex].textLayer;
+        this.findController.getPageText(pageIndex).then(pageContentString => {
+          let pageContent = this.findController.normalize(pageContentString);
+          pageContent = pageContent.replace(/\s/g, ' ');
+          let normalizedTextToFind = this.findController.normalize(textToFind);
+
+          pageContent = pageContent.toLowerCase();
+          normalizedTextToFind = normalizedTextToFind.toLowerCase();
+          let searchPositionStart = 0;
+          let matchIndices = [];
+          while(true) {
+            let matchIndex = pageContent.indexOf(normalizedTextToFind, searchPositionStart);
+            searchPositionStart = matchIndex + 1;
+            if(matchIndex === -1)
+              break;
+            matchIndices.push(matchIndex);
+          }
+
+          if(matchIndices.length > 0) {
+            if (matchNumberIndex < matchIndices.length) {
+              let matchIndex = matchIndices[matchNumberIndex];
+              while(!pageTextLayer.divContentDone) {
+              }
+              scrollIntoView(this.pages[pageIndex].textLayer.textDivs[matchIndex]);
+            }
+          }
+        });
+      }
+      let pageIndex = parseInt(pageNumber) - 1;
+      this.scrollPageIntoView(pageNumber);
+      let pageTextLayer = this.getPageView(pageIndex).textLayer;
+      if(pageTextLayer && pageTextLayer.renderingDone)
+        scrollViewToElement.bind(this)();
+      else {
+        var myListener = function(self) {
+          var handler = function(event) {
+            if(event.detail.pageNumber === pageNumber) {
+              scrollViewToElement.bind(self)();
+              document.removeEventListener('textlayerrendered', handler);
+            }
+          }
+          return handler;
+        };
+
+        document.addEventListener('textlayerrendered', myListener(this));
+      }
+
     },
 
     _updateLocation: function (firstPage) {
@@ -6320,6 +6385,17 @@ var PDFViewerApplication = {
     } else if (scale) {
       this.setScale(scale, true);
       this.page = 1;
+    }
+
+    const params = new URLSearchParams(document.location.hash.substring(1));
+    let pageNumber = parseInt(params.get("pageNumber"));
+    let text = params.get("text");
+    let matchNumberAsString = params.get("matchNumber");
+    if(pageNumber && !text)
+      this.pdfViewer.scrollPageIntoView(pageNumber);
+    else if(pageNumber && text) {
+      let matchNumber = matchNumberAsString ? parseInt(matchNumberAsString) : 1;
+      this.pdfViewer.scrollTextOnPageIntoView(pageNumber, text, matchNumber);
     }
 
     if (this.pdfViewer.currentScale === UNKNOWN_SCALE) {
