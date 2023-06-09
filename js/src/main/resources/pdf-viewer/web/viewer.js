@@ -1175,21 +1175,19 @@ var PDFFindController = (function PDFFindControllerClosure() {
       }
     },
 
-    getPageText: function PDFFindController_extractPageText(pageIndex) {
-    function textContentResolved(pageTextContentObject) {
-      let textItems = pageTextContentObject.items;
-      let textCharacterItems = [];
+    getPageTextItems: async function PDFFindController_extractPageText(pageIndex) {
+      let pageTextContentObject = await this.pdfViewer.getPageTextContent(pageIndex);
+      let pageTextItems = pageTextContentObject.items.map(textItem => textItem.str);
+      return pageTextItems;
+    },
 
-      for (const textItem of textItems) {
-        textCharacterItems.push(textItem.str);
-      }
+    getPageText: async function PDFFindController_extractPageText(pageIndex) {
+      let pageTextContentObject = await this.pdfViewer.getPageTextContent(pageIndex);
+      let textStringItems = pageTextContentObject.items.map(textItem => textItem.str);
+      let pageText = textStringItems.join('');
+      return pageText;
+    },
 
-      let pageContentString = textCharacterItems.join('');
-      return pageContentString;
-    }
-    let promise = this.pdfViewer.getPageTextContent(pageIndex).then(textContentResolved);
-    return promise;
-  },
 
 
     extractText: function PDFFindController_extractText() {
@@ -4605,35 +4603,49 @@ var PDFViewer = (function pdfViewer() {
 
     scrollTextOnPageIntoView: function pdfViewer_scrollTextOnPageIntoView(pageNumber, textToFind, matchNumber) {
       let matchNumberIndex = Math.max(matchNumber - 1, 0);
-      function scrollViewToElement() {
+
+      async function scrollViewToElement() {
         let pageIndex = parseInt(pageNumber) - 1;
         let pageTextLayer = this.pages[pageIndex].textLayer;
-        this.findController.getPageText(pageIndex).then(pageContentString => {
-          let pageContent = this.findController.normalize(pageContentString);
-          pageContent = pageContent.replace(/\s/g, ' ');
-          let normalizedTextToFind = this.findController.normalize(textToFind);
+        let pageTextString = await this.findController.getPageText(pageIndex);
+        let pageTextItems = await this.findController.getPageTextItems(pageIndex);
+        let normalizedPageTextString = this.findController.normalize(pageTextString);
+        normalizedPageTextString = normalizedPageTextString.replace(/\s/g, ' ');
+        normalizedPageTextString = normalizedPageTextString.toLowerCase();
 
-          pageContent = pageContent.toLowerCase();
-          normalizedTextToFind = normalizedTextToFind.toLowerCase();
-          let searchPositionStart = 0;
-          let matchIndices = [];
-          while(true) {
-            let matchIndex = pageContent.indexOf(normalizedTextToFind, searchPositionStart);
-            searchPositionStart = matchIndex + 1;
-            if(matchIndex === -1)
-              break;
-            matchIndices.push(matchIndex);
-          }
-
-          if(matchIndices.length > 0) {
-            if (matchNumberIndex < matchIndices.length) {
-              let matchIndex = matchIndices[matchNumberIndex];
-              while(!pageTextLayer.divContentDone) {
-              }
-              scrollIntoView(this.pages[pageIndex].textLayer.textDivs[matchIndex]);
+        let normalizedTextToFind = this.findController.normalize(textToFind);
+        normalizedTextToFind = normalizedTextToFind.toLowerCase();
+        let searchPositionStart = 0;
+        let pageTextMatchIndices = [];
+        while (true) {
+          let matchIndex = normalizedPageTextString.indexOf(normalizedTextToFind, searchPositionStart);
+          searchPositionStart = matchIndex + 1;
+          if (matchIndex === -1)
+            break;
+          pageTextMatchIndices.push(matchIndex);
+        }
+        if (pageTextMatchIndices.length > 0) {
+          if (matchNumberIndex < pageTextMatchIndices.length) {
+            let pageTextMatchIndex = pageTextMatchIndices[matchNumberIndex];
+            let textLayer = this.pages[pageIndex].textLayer;
+            while (!pageTextLayer.divContentDone) {
             }
+            let matchingTextDiv = null;
+            let lastTextDiv_LastCharacter_PositionInText = -1;
+            for(let i = 0; i < pageTextItems.length; ++i) {
+              let textItem = pageTextItems[i];
+              if(
+                  lastTextDiv_LastCharacter_PositionInText < pageTextMatchIndex &&
+                  pageTextMatchIndex <= (lastTextDiv_LastCharacter_PositionInText + textItem.length)) {
+                matchingTextDiv = this.pages[pageIndex].textLayer.textDivs[i];
+                break;
+              }
+              lastTextDiv_LastCharacter_PositionInText += textItem.length;
+            }
+            if(matchingTextDiv)
+              scrollIntoView(matchingTextDiv);
           }
-        });
+        }
       }
       let pageIndex = parseInt(pageNumber) - 1;
       this.scrollPageIntoView(pageNumber);
