@@ -42,20 +42,20 @@
   <minorEdit>false</minorEdit>
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
-  <content>### Missing: rendering.macro.pdfviewer.name=
-### Missing: rendering.macro.pdfviewer.description=
-### Missing: rendering.macro.pdfviewer.parameter.file.name=
-### Missing: rendering.macro.pdfviewer.parameter.file.description=
-### Missing: rendering.macro.pdfviewer.parameter.document.name=
-### Missing: rendering.macro.pdfviewer.parameter.document.description=
-### Missing: rendering.macro.pdfviewer.parameter.width.name=
-### Missing: rendering.macro.pdfviewer.parameter.width.description=
-### Missing: rendering.macro.pdfviewer.parameter.height.name=
-### Missing: rendering.macro.pdfviewer.parameter.height.description=
-### Missing: rendering.macro.pdfviewer.parameter.asauthor.name=
-### Missing: rendering.macro.pdfviewer.parameter.asauthor.description=
-### Missing: pdfviewer.error.nodocument=
-### Missing: pdfviewer.error.noattachment=
-### Missing: pdfviewer.error.nofile=
+  <content>rendering.macro.pdfviewer.name=PDF-fremviser
+rendering.macro.pdfviewer.description=PDF-fremviser baseret på Mozilla pdf.js
+rendering.macro.pdfviewer.parameter.file.name=Fil
+rendering.macro.pdfviewer.parameter.file.description=Navnet på PDF-filen eller en absolut URL til PDF-filen
+rendering.macro.pdfviewer.parameter.document.name=Dokument
+rendering.macro.pdfviewer.parameter.document.description=Reference til det XWiki-dokument, som filen er vedhæftet. Hvis den ikke er angivet, bruges det aktuelle dokument. Hvis filargumentet er en absolut URL, ignoreres dette argument.
+rendering.macro.pdfviewer.parameter.width.name=Bredde
+rendering.macro.pdfviewer.parameter.width.description=Fremviserens bredde i pixel. Hvis den ikke er angivet, bruges standardværdien
+rendering.macro.pdfviewer.parameter.height.name=Højde
+rendering.macro.pdfviewer.parameter.height.description=Fremviserens højde i pixel. Hvis den ikke er angivet, bruges standardværdien
+rendering.macro.pdfviewer.parameter.asauthor.name=Overdrag min ret til at se
+rendering.macro.pdfviewer.parameter.asauthor.description=Hvis værdien er true (eller 1 eller yes), og den bruger, der ser siden, ikke har adgang til det dokument, der indeholder PDF-filen, kan PDF-filen alligevel vises med din ret til at se (forudsat at du selv har ret til at se dokumentet).
+pdfviewer.error.nodocument=Dokumentet [{0}] findes ikke, eller du har ikke adgang til det.
+pdfviewer.error.noattachment=Bilaget [{0}] findes ikke i dokumentet [{1}].
+pdfviewer.error.nofile=Der er ikke angivet et PDF-filnavn eller en absolut URL.
 </content>
 </xwikidoc>
