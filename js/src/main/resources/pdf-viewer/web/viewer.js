@@ -1175,6 +1175,21 @@ var PDFFindController = (function PDFFindControllerClosure() {
       }
     },
 
+    getPageTextItems: async function PDFFindController_extractPageText(pageIndex) {
+      let pageTextContentObject = await this.pdfViewer.getPageTextContent(pageIndex);
+      let pageTextItems = pageTextContentObject.items.map(textItem => textItem.str);
+      return pageTextItems;
+    },
+
+    getPageText: async function PDFFindController_extractPageText(pageIndex) {
+      let pageTextContentObject = await this.pdfViewer.getPageTextContent(pageIndex);
+      let textStringItems = pageTextContentObject.items.map(textItem => textItem.str);
+      let pageText = textStringItems.join('');
+      return pageText;
+    },
+
+
+
     extractText: function PDFFindController_extractText() {
       if (this.startedTextExtraction) {
         return;
@@ -1800,6 +1815,7 @@ var SecondaryToolbar = {
     this.print = options.print;
     this.download = options.download;
     this.viewBookmark = options.viewBookmark;
+    this.copyPosition = options.copyPosition;
     this.firstPage = options.firstPage;
     this.lastPage = options.lastPage;
     this.pageRotateCw = options.pageRotateCw;
@@ -1817,6 +1833,7 @@ var SecondaryToolbar = {
       { element: this.openFile, handler: this.openFileClick },
       { element: this.print, handler: this.printClick },
       { element: this.download, handler: this.downloadClick },
+      { element: this.copyPosition, handler: this.copyPositionClick },
       { element: this.viewBookmark, handler: this.viewBookmarkClick },
       { element: this.firstPage, handler: this.firstPageClick },
       { element: this.lastPage, handler: this.lastPageClick },
@@ -1853,6 +1870,12 @@ var SecondaryToolbar = {
   downloadClick: function secondaryToolbarDownloadClick(evt) {
     PDFViewerApplication.download();
     this.close();
+  },
+
+  copyPositionClick: function (evt) {
+    PDFViewerApplication.pdfViewer.update();
+    navigator.clipboard.writeText(PDFViewerApplication.pdfViewer.location.pdfOpenParams);
+    evt.preventDefault();
   },
 
   viewBookmarkClick: function secondaryToolbarViewBookmarkClick(evt) {
@@ -4578,6 +4601,73 @@ var PDFViewer = (function pdfViewer() {
       scrollIntoView(pageView.div, { left: left, top: top });
     },
 
+    scrollTextOnPageIntoView: function pdfViewer_scrollTextOnPageIntoView(pageNumber, textToFind, matchNumber) {
+      let matchNumberIndex = Math.max(matchNumber - 1, 0);
+
+      async function scrollViewToElement() {
+        let pageIndex = parseInt(pageNumber) - 1;
+        let pageTextLayer = this.pages[pageIndex].textLayer;
+        let pageTextString = await this.findController.getPageText(pageIndex);
+        let pageTextItems = await this.findController.getPageTextItems(pageIndex);
+        let normalizedPageTextString = this.findController.normalize(pageTextString);
+        normalizedPageTextString = normalizedPageTextString.replace(/\s/g, ' ');
+        normalizedPageTextString = normalizedPageTextString.toLowerCase();
+
+        let normalizedTextToFind = this.findController.normalize(textToFind);
+        normalizedTextToFind = normalizedTextToFind.toLowerCase();
+        let searchPositionStart = 0;
+        let pageTextMatchIndices = [];
+        while (true) {
+          let matchIndex = normalizedPageTextString.indexOf(normalizedTextToFind, searchPositionStart);
+          searchPositionStart = matchIndex + 1;
+          if (matchIndex === -1)
+            break;
+          pageTextMatchIndices.push(matchIndex);
+        }
+        if (pageTextMatchIndices.length > 0) {
+          if (matchNumberIndex < pageTextMatchIndices.length) {
+            let pageTextMatchIndex = pageTextMatchIndices[matchNumberIndex];
+            let textLayer = this.pages[pageIndex].textLayer;
+            while (!pageTextLayer.divContentDone) {
+            }
+            let matchingTextDiv = null;
+            let lastTextDiv_LastCharacter_PositionInText = -1;
+            for(let i = 0; i < pageTextItems.length; ++i) {
+              let textItem = pageTextItems[i];
+              if(
+                  lastTextDiv_LastCharacter_PositionInText < pageTextMatchIndex &&
+                  pageTextMatchIndex <= (lastTextDiv_LastCharacter_PositionInText + textItem.length)) {
+                matchingTextDiv = this.pages[pageIndex].textLayer.textDivs[i];
+                break;
+              }
+              lastTextDiv_LastCharacter_PositionInText += textItem.length;
+            }
+            if(matchingTextDiv)
+              scrollIntoView(matchingTextDiv);
+          }
+        }
+      }
+      let pageIndex = parseInt(pageNumber) - 1;
+      this.scrollPageIntoView(pageNumber);
+      let pageTextLayer = this.getPageView(pageIndex).textLayer;
+      if(pageTextLayer && pageTextLayer.renderingDone)
+        scrollViewToElement.bind(this)();
+      else {
+        var myListener = function(self) {
+          var handler = function(event) {
+            if(event.detail.pageNumber === pageNumber) {
+              scrollViewToElement.bind(self)();
+              document.removeEventListener('textlayerrendered', handler);
+            }
+          }
+          return handler;
+        };
+
+        document.addEventListener('textlayerrendered', myListener(this));
+      }
+
+    },
+
     _updateLocation: function (firstPage) {
       var currentScale = this._currentScale;
       var currentScaleValue = this._currentScaleValue;
@@ -5537,6 +5627,7 @@ var PDFViewerApplication = {
       openFile: document.getElementById('secondaryOpenFile'),
       print: document.getElementById('secondaryPrint'),
       download: document.getElementById('secondaryDownload'),
+      copyPosition: document.getElementById('copyPositionButton'),
       viewBookmark: document.getElementById('secondaryViewBookmark'),
       firstPage: document.getElementById('firstPage'),
       lastPage: document.getElementById('lastPage'),
@@ -6306,6 +6397,17 @@ var PDFViewerApplication = {
     } else if (scale) {
       this.setScale(scale, true);
       this.page = 1;
+    }
+
+    const params = new URLSearchParams(document.location.hash.substring(1));
+    let page = parseInt(params.get("page"));
+    let text = params.get("text");
+    let matchNumberAsString = params.get("matchNumber");
+    if(page && !text)
+      this.pdfViewer.scrollPageIntoView(page);
+    else if(page && text) {
+      let matchNumber = matchNumberAsString ? parseInt(matchNumberAsString) : 1;
+      this.pdfViewer.scrollTextOnPageIntoView(page, text, matchNumber);
     }
 
     if (this.pdfViewer.currentScale === UNKNOWN_SCALE) {
